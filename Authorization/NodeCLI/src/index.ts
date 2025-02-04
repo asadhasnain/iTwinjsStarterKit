@@ -1,3 +1,8 @@
+/**
+ * The sample explains the authorization, and fetching of iModel and iTwin details using the iTwin.js platform.
+ * It prompts the user for input, signs in to the iTwin.js platform, fetches the required details, and then signs out.
+ */
+
 import { NodeCliAuthorizationClient } from "@itwin/node-cli-authorization";
 import axios from "axios";
 import * as dotenv from "dotenv";
@@ -11,7 +16,10 @@ const clientId = process.env.CLIENT_ID || ""
 const authClient = new NodeCliAuthorizationClient({clientId, scope: "itwin-platform"});
 let accessToken: string = "";
 
- (async() => {
+/**
+ * Main function to handle the sign-in process, prompt user for details, and sign out.
+ */
+(async() => {
 
     console.log("Starting to Sign In");
 
@@ -24,13 +32,20 @@ let accessToken: string = "";
     await authClient.signOut(); // Sign out of iTwin.js
 })();
 
-
+/**
+ * Prompts the user to choose an option and enter a GUID, then fetches the corresponding details.
+ */
 export async function promptUserForDetails() {
     const reader = readline.createInterface({
         input: process.stdin,
         output: process.stdout
     });
 
+    /**
+     * Fetches details based on the selected option and GUID.
+     * @param {number} option - The selected option (1 for iModel, 2 for iTwin).
+     * @param {string} guid - The GUID for which details are to be fetched.
+     */
     const getDetails = async (option: number, guid: string) => {
         switch (option) {
             case 1:
@@ -59,7 +74,10 @@ export async function promptUserForDetails() {
     });
 }
 
-
+/**
+ * Fetches details from the given URL and logs the response.
+ * @param {string} url - The URL to fetch details from.
+ */
 export async function fetchDetails(url: string) {
     try {
         const response = await axios.get(url, {
