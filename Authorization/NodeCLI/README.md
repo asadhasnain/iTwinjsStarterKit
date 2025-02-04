@@ -9,10 +9,17 @@ This is a very simple starting guide to implement your authorization for a Node-
     ![alt text](RegisterApplication.png)
 
 2. After the application is registered, you will get the clientId. Copy it.
-3. Place that in `index.ts`:
+
+3. Place the clientId in .env file
+
+    ```sh
+    CLIENT_ID=[Add your clientId here]
+    ```
+
+4. Client_ID is used in `index.ts` file creating the **NodeCliAuthorizationClient**:
 
     ```typescript
-    const authClient = new NodeCliAuthorizationClient({clientId: "[Add Client Id Here]", scope: "itwin-platform"});
+    const authClient = new NodeCliAuthorizationClient({clientId, scope: "itwin-platform"});
     ```
 
     Note: If the `redirectUri` is not specified, it will default to `redirectUri: "http://localhost:3000/signin-callback"`.
@@ -20,7 +27,7 @@ This is a very simple starting guide to implement your authorization for a Node-
     If you have set a different `redirectUri` while registering the application, then specify it in the `redirectUri`:
 
     ```typescript
-    const authClient = new NodeCliAuthorizationClient({clientId: "[Add Client Id Here]", scope: "itwin-platform", redirectUri: "http://localhost:5000/signin-callback"});
+    const authClient = new NodeCliAuthorizationClient({clientId, scope: "itwin-platform", redirectUri: "http://localhost:5000/signin-callback"});
     ```
 
 ## Install Dependencies

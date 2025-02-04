@@ -1,8 +1,14 @@
 import { NodeCliAuthorizationClient } from "@itwin/node-cli-authorization";
-import * as readline from "readline";
 import axios from "axios";
+import * as dotenv from "dotenv";
+import * as readline from "readline";
 
-const authClient = new NodeCliAuthorizationClient({clientId: "[Add Client Id Here]", scope: "itwin-platform"});
+// Load environment variables from .env file
+dotenv.config();
+
+const clientId = process.env.CLIENT_ID || ""
+
+const authClient = new NodeCliAuthorizationClient({clientId, scope: "itwin-platform"});
 let accessToken: string = "";
 
  (async() => {
