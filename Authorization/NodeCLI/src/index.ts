@@ -25,7 +25,7 @@ let accessToken: string = "";
 })();
 
 
-async function promptUserForDetails() {
+export async function promptUserForDetails() {
     const reader = readline.createInterface({
         input: process.stdin,
         output: process.stdout
@@ -60,7 +60,7 @@ async function promptUserForDetails() {
 }
 
 
-async function fetchDetails(url: string) {
+export async function fetchDetails(url: string) {
     try {
         const response = await axios.get(url, {
             headers: {
