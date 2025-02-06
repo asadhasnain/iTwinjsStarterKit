@@ -11,11 +11,11 @@
 Each sample is self-contained and focuses on a specific feature of iTwin.js.  
 
   📁 iTwinjsStarterKit  
-   ├── 📂 Authorization # Handling authentication in iTwin.js  
-   ├── 📂 Viewer # Displaying iModels in a web viewer   
-   ├── 📂 GettingStarted # Basic setup and first project   
+   ├── 📂 Authorization # Handling authentication and authorization in iTwin.js  
+   ├── 📂 Viewer # Displaying iModels in a web viewer  
+   ├── 📂 GettingStarted # Basic setup and first project  
    ├── 📂 UIComponents # Working with UI elements in iTwin.js  
-   └── 📄 README.md # You're here!   
+   └── 📄 README.md # You're here!  
 
 ## 🛠 Prerequisites  
 

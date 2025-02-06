@@ -1,6 +1,6 @@
-# Node CLI Authorization
+# Node CLI Authentication and Authorization
 
-This is a very simple starting guide to implement your authorization for a Node-based application.
+This is a very simple starting guide to implement your authentication and authorization for a Node-based application.
 
 ## Register Client
 
