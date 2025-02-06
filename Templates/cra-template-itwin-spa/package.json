@@ -1,0 +1,34 @@
+{
+  "name": "cra-template-itwin-spa",
+  "version": "1.0.0",
+  "keywords": [
+    "react",
+    "create-react-app",
+    "template",
+    "typescript",
+    "iModel",
+    "iTwinJs",
+    "iTwin",
+    "SPA"
+  ],
+  "description": "The iTwin.js SPA template for Create React App web applications.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asadhasnain/iTwinjsStarterKit.git",
+    "directory": "templates/cra-template-itwin-spa"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/asadhasnain/iTwinjsStarterKit/issues"
+  },
+  "files": [
+    "template",
+    "template.json",
+    "template/.npmrc"
+  ],
+  "main": "template.json",
+  "scripts": {
+    "build": "",
+    "test": ""
+  }
+}

@@ -1,6 +1,6 @@
 # Single Page Application (SPA) Authentication and Authorization
 
-This is a very simple starting guide to implement your authorization for a SPA application.
+This is a very simple starting guide to implement your authorization for a SPA application
 
 ## Register Client
 
