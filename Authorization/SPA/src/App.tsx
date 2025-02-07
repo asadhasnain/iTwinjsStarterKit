@@ -12,7 +12,7 @@ import IModelDetails from "./IModelDetails";
  * @returns {React.FC} The App component.
  */
 
-const App: React.FC = () => {
+export const App: React.FC = () => {
   const accessToken = useAuth();
 
   return (
@@ -20,4 +20,3 @@ const App: React.FC = () => {
   );
 };
 
-export default App;
