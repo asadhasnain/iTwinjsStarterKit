@@ -4,7 +4,9 @@ This repository contains templates for the iTwin.js Starter Kit. These templates
 
 ## Templates
 
-- **Template 1**: iTwin SPA
+- **Template 1**: iTwin SPA 
+
+    ✏️ [Building a Clean React + TypeScript + iTwin.js App using CRA](https://medium.com/@asad_bukhari/building-a-clean-react-typescript-itwin-js-using-cra-4ed201243729)
 
     ```sh
         npx create-react-app my-new-app --template cra-template-itwin-spa
