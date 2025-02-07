@@ -4,12 +4,11 @@ This repository contains templates for the iTwin.js Starter Kit. These templates
 
 ## Templates
 
-- **Template 1**: iTwin SPA 
+- **Template 1**: iTwin SPA
 
     ```sh
         npx create-react-app my-new-app --template cra-template-itwin-spa
-    ```sh
-
+    ```
 
 ## Steps to Publish a Template
 

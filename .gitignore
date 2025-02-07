@@ -48,3 +48,5 @@ dist/
 coverage/
 
 .configStore/
+
+build/
