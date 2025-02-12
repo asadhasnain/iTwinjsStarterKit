@@ -19,7 +19,7 @@ Each sample is self-contained and focuses on a specific feature of iTwin.js.
 
 ## 🛠 Prerequisites  
 
-To run the examples, you'll need:  
+To run the any examples, you'll need:  
 
 - **Node.js** (LTS version recommended)  
 - **iTwin.js Account** (Set up via [developer.bentley.com](https://developer.bentley.com/))  
@@ -32,17 +32,28 @@ To run the examples, you'll need:
    ```sh
    git clone https://github.com/asadhasnain/iTwinjsStarterKit.git
    cd iTwinjsStarterKit
+   ```
 
-2. **Install Dependencies:**
+2. **Navigate into the sample folder you want to run:**
+
+   For example, if you want to try the NodeCLI sample located in the Authorization folder, navigate to that directory in your terminal.
+
+   ```sh
+   cd Authorization\NodeCLI
+   ```
+
+3. **Install Dependencies:**
 
    ```sh
     npm install
+   ```
 
-3. **Start the project:**
+4. **Start the project:**
 
    ```sh  
     npm build
     npm start
+   ```
 
 ## 🤝 Contributing
 
