@@ -1,0 +1,36 @@
+﻿@page "/"
+
+@inject IAccessTokenProvider TokenProvider
+
+<PageTitle>Home</PageTitle>
+
+Welcome to Bentley's Standalone Blazor App - Log in to Fetch IModel Details!
+
+@* <p style="width: 100%; word-break: break-all; overflow-wrap: break-word; margin-top: 2%;">
+    @(!string.IsNullOrEmpty(_accessToken) ? $"Access Token: Bearer {_accessToken}" : "Please Log in")
+</p> *@
+
+@if (!string.IsNullOrEmpty(_accessToken))
+{
+    <IModelDetails />
+}
+
+@code {
+
+    private string? _accessToken;
+    protected override async Task OnInitializedAsync()
+    {
+        var tokenResult = await TokenProvider.RequestAccessToken();
+
+        if (tokenResult.TryGetToken(out var accessToken))
+        {
+            Console.WriteLine($"Access Token: Bearer {accessToken.Value}");
+            _accessToken = accessToken.Value;
+        }
+        else
+        {
+            Console.WriteLine("Failed to obtain access token - Please login.");
+        }
+    }
+}
+

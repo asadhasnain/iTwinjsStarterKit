@@ -1,0 +1,93 @@
+@namespace IMS_Bentley_iModel_Details.Components
+
+@inject IAccessTokenProvider TokenProvider
+@using System.Net.Http
+@using System.Net.Http.Headers
+@using Microsoft.AspNetCore.Components
+@using System.Text.Json
+
+<h3>iModel Details</h3>
+
+<input type="text" placeholder="Enter iModel ID" @bind="iModelId" />
+<button @onclick="FetchIModelDetails">Fetch Details</button>
+
+@if (isLoading)
+{
+    <div>Loading...</div>
+}
+
+@if (!string.IsNullOrEmpty(error))
+{
+    <div>Error: @error</div>
+}
+
+@if (iModelInfo != null)
+{
+    <div style="width: 100%; word-break: break-all; overflow-wrap: break-word; margin-top: 2%;">
+        <h2>iModel Details</h2>
+        <pre>@iModelInfo</pre>
+    </div>
+}
+
+@code {
+    private string iModelId = string.Empty;
+    private string? iModelInfo;
+    private string? error;
+    private bool isLoading = false;
+
+    /// <summary>
+    /// Fetches the iModel details from the API.
+    /// </summary>
+    private async Task FetchIModelDetails()
+    {
+        isLoading = true;
+        error = null;
+        iModelInfo = null;
+
+        var tokenResult = await TokenProvider.RequestAccessToken();
+
+        if (tokenResult.TryGetToken(out var accessToken))
+        {
+            try
+            {
+                using var httpClient = new HttpClient();
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken.Value);
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/vnd.bentley.itwin-platform.v2+json"));
+
+                var response = await httpClient.GetAsync($"https://api.bentley.com/imodels/{iModelId}");
+                response.EnsureSuccessStatusCode();
+
+                iModelInfo = await response.Content.ReadAsStringAsync();
+
+                iModelInfo = PrettyPrintJson(iModelInfo);
+            }
+            catch (Exception ex)
+            {
+                error = "Failed to fetch iModel details";
+                Console.WriteLine(ex.Message);
+            }
+        }
+        else
+        {
+            error = "Failed to obtain access token - Please login.";
+        }
+
+        isLoading = false;
+    }
+
+
+    /// <summary>
+    /// Pretty prints the JSON string.
+    /// </summary>
+    /// <param name="json">The JSON string to format.</param>
+    /// <returns>The formatted JSON string.</returns>
+    private string PrettyPrintJson(string json)
+    {
+        var options = new JsonSerializerOptions
+        {
+            WriteIndented = true
+        };
+        var jsonElement = JsonSerializer.Deserialize<JsonElement>(json);
+        return JsonSerializer.Serialize(jsonElement, options);
+    }
+}

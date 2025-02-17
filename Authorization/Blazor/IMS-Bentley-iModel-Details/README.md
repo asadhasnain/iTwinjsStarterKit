@@ -1,6 +1,6 @@
-# Blazor Standalone Application Authentication and Authorization with Bentley IMS
+# Implementing Bentley IMS Authentication and Authorization in a Blazor Standalone Application
 
-This is a very simple starting guide to implement your Bentley authentication and authorization for Blazor Standalone Application (BSA)
+This guide provides a starting point for implementing Bentley authentication and authorization in a Blazor Standalone Application (BSA). Once authorized using an Access Token, you can make requests to iModel APIs exposed by the iTwin Platform. By providing an iModel GUID, the application retrieves and displays the corresponding iModel details.
 
 ## Register Client
 
@@ -52,8 +52,8 @@ This is a very simple starting guide to implement your Bentley authentication an
 
 ## To create the Blazor application from scratch
 
-From the command line or VS Code, create a new project using the Blazor WebAssembly template with individual authentication and no extra pages:
+From the command line or VS Code, create a new project using the Blazor WebAssembly template with individual authentication:
 
-        dotnet new blazorwasm --name IMS-Bentley --auth Individual --empty
+        dotnet new blazorwasm --name IMS-Bentley --auth Individual
 
 Update the **applicationUrl** in **launch.json** to match the redirect URLs specified in the registered client.
