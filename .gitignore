@@ -50,3 +50,8 @@ coverage/
 .configStore/
 
 build/
+
+obj/
+
+bin/
+
