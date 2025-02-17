@@ -56,4 +56,4 @@ From the command line or VS Code, create a new project using the Blazor WebAssem
 
         dotnet new blazorwasm --name IMS-Bentley --auth Individual
 
-Update the **applicationUrl** in **launch.json** to match the redirect URLs specified in the registered client.
+Update the **applicationUrl** in **launchSettings.json** to match the redirect URLs specified in the registered client.
