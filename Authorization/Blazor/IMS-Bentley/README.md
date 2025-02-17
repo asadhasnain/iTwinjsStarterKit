@@ -57,3 +57,5 @@ From the command line or VS Code, create a new project using the Blazor WebAssem
         dotnet new blazorwasm --name IMS-Bentley --auth Individual --empty
 
 Update the **applicationUrl** in **launchSettings.json** to match the redirect URLs specified in the registered client.
+
+Blog: [Authenticating and Authorizing a Blazor Standalone Application (WebAssembly) with iTwin Platform](https://medium.com/@asad_bukhari/authenticating-and-authorizing-a-blazor-standalone-application-webassembly-with-itwin-platform-9006b6c0a09c)
