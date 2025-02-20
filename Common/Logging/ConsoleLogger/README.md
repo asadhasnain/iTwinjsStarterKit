@@ -2,6 +2,8 @@
 
 This is a very simple starting guide to initialize iTwin.js Console Logger. Enabling and disabling logger categories based on the Logger.config.json
 
+   ![iTwinjs Console Logger](iTwinjs_Console_Logger.png)
+
 You can set the default log level using the LOG_LEVEL variable in the .env file. The valid values for LOG_LEVEL are:
 
     /** Tracing and debugging - low level */

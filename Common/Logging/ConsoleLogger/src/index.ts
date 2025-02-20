@@ -17,6 +17,7 @@ dotenv.config();
 
   initializeLogging(process.env.LOG_LEVEL);
 
+
   Logger.logInfo("main", "Print this line if default logging is set to Info or lower");
 
   Logger.logInfo("Logging.ConsoleLogger", "Logging initialized");

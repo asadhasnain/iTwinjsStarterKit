@@ -1,6 +1,6 @@
 {
     "loggerConfig": {
-       "defaultLevel": "Trace",
+      "defaultLevel": "${LOG_LEVEL}",
        "categoryLevels": [
            {"category": "Backend.BriefcaseManager", "logLevel": "Trace"},
            {"category": "imodeljs-rpc", "logLevel": "None"},
@@ -16,10 +16,6 @@
            {"category": "SQLite", "logLevel": "None"},
            {"category": "GeoCoord", "logLevel": "None"}
        ]
-     },
-     "seq": {
-       "hostURL": "${ROBOT-WORLD-SEQ-URL}",
-       "port": "${ROBOT-WORLD-SEQ-PORT}"
      }
   }
   
