@@ -1,0 +1,9 @@
+{
+    "loggerConfig": {
+       "defaultLevel": "${LOG_LEVEL}",
+       "categoryLevels": [
+           {"category": "Logging.ConsoleLogger", "logLevel": "Trace"}
+       ]
+     }
+  }
+  
