@@ -1,0 +1,25 @@
+{
+    "loggerConfig": {
+       "defaultLevel": "Trace",
+       "categoryLevels": [
+           {"category": "Connections.Checkpoint", "logLevel": "Trace"},
+           {"category": "imodeljs-rpc", "logLevel": "None"},
+           {"category": "imodeljs-backend.AutoPush", "logLevel": "None"},
+           {"category": "ECPresentation", "logLevel": "None"},
+           {"category": "Diagnostics.ECSqlStatement", "logLevel": "None"},
+           {"category": "ECObjectsNative", "logLevel": "None"},
+           {"category": "UnitsNative", "logLevel": "None"},
+           {"category": "BeSQLite", "logLevel": "None"},
+           {"category": "ECDb", "logLevel": "None"},
+           {"category": "CloudSqlite", "logLevel": "None"},
+           {"category": "DgnCore", "logLevel": "None"},
+           {"category": "SQLite", "logLevel": "None"},
+           {"category": "GeoCoord", "logLevel": "None"}
+       ]
+     },
+     "seq": {
+       "hostURL": "${ROBOT-WORLD-SEQ-URL}",
+       "port": "${ROBOT-WORLD-SEQ-PORT}"
+     }
+  }
+  
