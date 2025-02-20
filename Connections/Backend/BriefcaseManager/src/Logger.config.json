@@ -2,7 +2,7 @@
     "loggerConfig": {
        "defaultLevel": "Trace",
        "categoryLevels": [
-           {"category": "Connections.Checkpoint", "logLevel": "Trace"},
+           {"category": "Backend.BriefcaseManager", "logLevel": "Trace"},
            {"category": "imodeljs-rpc", "logLevel": "None"},
            {"category": "imodeljs-backend.AutoPush", "logLevel": "None"},
            {"category": "ECPresentation", "logLevel": "None"},

@@ -58,13 +58,13 @@ const downloadAndProcessBriefcase = async (): Promise<void> => {
   const localBriefcaseProps = await BriefcaseManager.downloadBriefcase(requestNewBriefcaseProps);
   const briefcaseDb = await BriefcaseDb.open({ fileName: localBriefcaseProps.fileName, readonly: true });
 
-  Logger.logInfo("Connections.Checkpoint", `Opened Briefcase Id: ${briefcaseDb.briefcaseId}`);
+  Logger.logInfo("Backend.BriefcaseManager", `Opened Briefcase Id: ${briefcaseDb.briefcaseId}`);
 
   const idSet = briefcaseDb.queryEntityIds({ from: "BisCore.Element" });
 
   idSet.forEach(id => {
     const element = briefcaseDb.elements.getElement(id);
-    Logger.logInfo("Connections.Checkpoint", `Element Id: ${element.id}, ClassName: ${element.className}`);
+    Logger.logInfo("Backend.BriefcaseManager", `Element Id: ${element.id}, ClassName: ${element.className}`);
   });
 
   briefcaseDb.close();
