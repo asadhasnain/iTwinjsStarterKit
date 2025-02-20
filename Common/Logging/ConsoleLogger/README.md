@@ -36,3 +36,4 @@ You can set the default log level using the LOG_LEVEL variable in the .env file.
 ## References
 
 1. [Logging](https://www.itwinjs.org/learning/common/logging/)
+2. [Step-by-Step Guide: Implementing Logging in iTwin.js Applications](https://medium.com/@asad_bukhari/step-by-step-guide-implementing-logging-in-itwin-js-applications-28ce949d68a8)
