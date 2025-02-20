@@ -60,11 +60,11 @@ const downloadAndProcessBriefcase = async (): Promise<void> => {
 
   Logger.logInfo("Connections.Checkpoint", `Opened Briefcase Id: ${briefcaseDb.briefcaseId}`);
 
-  const idSet = briefcaseDb.queryEntityIds({ from: "ProcessFunctional.Equipment" });
+  const idSet = briefcaseDb.queryEntityIds({ from: "BisCore.Element" });
 
   idSet.forEach(id => {
     const element = briefcaseDb.elements.getElement(id);
-    Logger.logInfo("Connections.Checkpoint", `Element Id: ${element.id}, Code: ${element.code.value!}`);
+    Logger.logInfo("Connections.Checkpoint", `Element Id: ${element.id}, ClassName: ${element.className}`);
   });
 
   briefcaseDb.close();
