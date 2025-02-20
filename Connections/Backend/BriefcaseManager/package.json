@@ -1,7 +1,7 @@
 {
   "name": "briefcase-manager",
   "version": "1.0.0",
-  "description": "The sample to establish download a briefcase, open it and list all the equipments in the briefcase.",
+  "description": "The sample to establish download a briefcase, open it and list all the bis core element in it.",
   "main": "index.js",
   "scripts": {
     "build": "tsc 1>&2",
