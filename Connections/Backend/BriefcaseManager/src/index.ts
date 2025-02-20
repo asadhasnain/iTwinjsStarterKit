@@ -85,7 +85,7 @@ const downloadAndProcessBriefcase = async (): Promise<void> => {
     await authClient.signIn();  // Sign in to iTwin.js
     accessToken = await authClient.getAccessToken();
 
-    await initializeLogging();
+    initializeLogging();
     await startupIModelHost();
     await downloadAndProcessBriefcase();
 
