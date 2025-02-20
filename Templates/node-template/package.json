@@ -1,0 +1,27 @@
+{
+  "name": "node-template",
+  "version": "1.0.0",
+  "description": "The simple boiler plate for iTwin.js node application.",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc 1>&2",
+    "start": "node ./dist/index.js",
+    "test": "mocha"
+  },
+  "keywords": [
+    "Node",
+    "CLI",
+    "Authorization",
+    "iTwin.js"
+  ],
+  "author": "Asad Hasnain",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  }
+}
