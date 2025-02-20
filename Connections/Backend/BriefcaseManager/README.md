@@ -6,7 +6,7 @@ This is a very simple starting guide to establish a Backend Node Application tha
     2. Initializing the logger
     3. Downloading Briefcase
     4. Opening the Briefcase
-    5. Listing all the ProcessFunctional.Equipment
+    5. Listing all the BisCore.Element
 
 ## Register Client
 
