@@ -1,6 +1,12 @@
-# Checkpoint connection
+# Backend Application Briefcase Manager
 
-This is a very simple starting guide to establish an IModelConnection to a Checkpoint of an iModel.
+This is a very simple starting guide to establish a Backend Node Application that can support:
+
+    1. Signing in the user
+    2. Initializing the logger
+    3. Downloading Briefcase
+    4. Opening the Briefcase
+    5. Listing all the ProcessFunctional.Equipment
 
 ## Register Client
 
@@ -10,11 +16,12 @@ This is a very simple starting guide to establish an IModelConnection to a Check
 
 2. After the application is registered, you will get the clientId. Copy it.
 
-3. Place the clientId in .env file
+3. Place the ClientId, iTwinId and iModelId in .env file
 
-    ```sh
-    CLIENT_ID=[Add your clientId here]
-    ```
+        CLIENT_ID=[Add your clientId here]
+
+        ITWIN_ID=[Set your iTwin id]
+        IMODEL_ID=[Set your iModel id]
 
 4. Client_ID is used in `index.ts` file creating the **NodeCliAuthorizationClient**:
 
@@ -45,6 +52,6 @@ This is a very simple starting guide to establish an IModelConnection to a Check
 
 ## References
 
-1. [CheckpointConnection](https://www.itwinjs.org/reference/core-frontend/imodelconnection/checkpointconnection/)
-2. [App Backend Development](https://www.itwinjs.org/learning/backend/)
+1. [App Backend Development](https://www.itwinjs.org/learning/backend/)
+2. [Briefcase Manager](https://www.itwinjs.org/reference/core-backend/imodels/briefcasemanager/)
 3. [iModelHub Access Backend](https://github.com/iTwin/imodels-clients/tree/main/itwin-platform-access/imodels-access-backend)
