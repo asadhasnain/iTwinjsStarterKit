@@ -1,0 +1,60 @@
+{
+    "ECClass": [
+    {
+        "typeName": "PIPE",
+        "pcfName": "PIPE",
+        "ECProperty": [
+        {
+            "propertyName": "SPECIFICATION",
+            "pcfName": "PIPING-SPEC"
+        },
+        {
+            "propertyName": "WEIGHT",
+            "pcfName": "WEIGHT"
+        },
+        {
+            "propertyName": "CODE",
+            "pcfName": "ITEM-CODE"
+        },
+        {
+            "propertyName": "DESCRIPTION",
+            "pcfName": "ITEM-DESCRIPTION"
+        },
+        {
+            "propertyName": "ADDITIONAL_CODE",
+            "pcfName": "UNIQUE-COMPONENT-IDENTIFIER"
+        }
+        ]
+    },
+    {
+        "typeName": "PIPING_NETWORK_SYSTEM",
+        "pcfName": "PIPELINE-REFERENCE",
+        "ECProperty": [
+        {
+            "propertyName": "SPECIFICATION",
+            "pcfName": "PIPING-SPEC"
+        },
+        {
+            "propertyName": "UNIT_NAME",
+            "pcfName": "ATTRIBUTE5"
+        },
+        {
+            "propertyName": "SERVICE_NAME",
+            "pcfName": "ATTRIBUTE3"
+        },
+        {
+            "propertyName": "NUMBER",
+            "pcfName": "ATTRIBUTE4"
+        },
+        {
+            "propertyName": "NOMINAL_DIAMETER",
+            "pcfName": "ATTRIBUTE7"
+        },
+        {
+            "propertyName": "PLANT_AREA",
+            "pcfName": "ATTRIBUTE6"
+        }
+        ]
+    }
+    ]
+}
