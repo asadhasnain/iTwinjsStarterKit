@@ -19,6 +19,7 @@ dotenv.config();
 const clientId = process.env.CLIENT_ID || "";
 const iTwinId = process.env.ITWIN_ID || "";
 const iModelId = process.env.IMODEL_ID || "";
+const LogLevel = process.env.LOG_LEVEL || "Error";
 
 if (!clientId || !iTwinId || !iModelId) {
   throw new Error("Must specify a valid configuration with CLIENT_ID, ITWIN_ID, and IMODEL_ID");
@@ -85,7 +86,7 @@ const downloadAndProcessBriefcase = async (): Promise<void> => {
     await authClient.signIn();  // Sign in to iTwin.js
     accessToken = await authClient.getAccessToken();
 
-    initializeLogging();
+    initializeLogging(LogLevel);
     await startupIModelHost();
     await downloadAndProcessBriefcase();
 
