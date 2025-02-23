@@ -1,9 +1,9 @@
 import { Logger, LoggerLevelsConfig } from "@itwin/core-bentley";
-import config from "./Logger.config.json";
+import config from "../Logger.config.json";
 
 
 
-export function initializeLogging(logLevel: string = "Error"): void {
+export function initializeLogging(logLevel: string = "Trace"): void {
 
   Logger.initializeToConsole();
 

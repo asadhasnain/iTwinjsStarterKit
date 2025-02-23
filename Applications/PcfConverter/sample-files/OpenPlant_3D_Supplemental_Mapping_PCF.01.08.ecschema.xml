@@ -1,0 +1,466 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ECSchema schemaName="OpenPlant_3D_Supplemental_Mapping_PCF" nameSpacePrefix="PCF" version="1.8" xmlns="http://www.bentley.com/schemas/Bentley.ECXML.2.0">
+    <ECSchemaReference name="Bentley_Standard_CustomAttributes" version="01.01" prefix="bsca" />
+	<ECClass typeName="PIPING_NETWORK_SYSTEM" displayLabel="Bolt" isDomainClass="True">
+        <ECProperty propertyName="SPECIFICATION" typeName="string" displayLabel="Line Number">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>PIPING-SPEC</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>		
+        <ECProperty propertyName="UNIT_NAME" typeName="string" displayLabel="Line Number">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>ATTRIBUTE5</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+        <ECProperty propertyName="SERVICE_NAME" typeName="string" description="code uses to describe the Plant Unit" displayLabel="Unit">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>ATTRIBUTE3</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+		<ECProperty propertyName="NUMBER" typeName="string" description="code uses to describe the Plant Unit" displayLabel="Unit">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>ATTRIBUTE4</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+		<ECProperty propertyName="NOMINAL_DIAMETER" typeName="double" description="code uses to describe the Plant Unit" displayLabel="Unit">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>ATTRIBUTE7</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+		<ECProperty propertyName="PLANT_AREA" typeName="string" displayLabel="Nominal Pressure">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>ATTRIBUTE6</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+    </ECClass>
+    <ECClass typeName="PIPE" description=" " displayLabel="Pipe" isDomainClass="True">
+        <ECProperty propertyName="SPECIFICATION" typeName="string" displayLabel="Line Number">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>PIPING-SPEC</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>	
+        <ECProperty propertyName="WEIGHT" typeName="double" displayLabel="Line Number">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>WEIGHT</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+        <ECProperty propertyName="CODE" typeName="string" description="name of area." displayLabel="Name">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>ITEM-CODE</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+        <ECProperty propertyName="DESCRIPTION" typeName="string" description="" displayLabel="Service">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>ITEM-DESCRIPTION</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+        <ECProperty propertyName="ADDITIONAL_CODE" typeName="string" description="code uses to describe the Plant Unit" displayLabel="Unit">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>UNIQUE-COMPONENT-IDENTIFIER</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+    </ECClass>
+	<ECClass typeName="GENERIC_VALVE" description=" " displayLabel="Gate Valve" isDomainClass="True">
+        <ECProperty propertyName="SPECIFICATION" typeName="string" displayLabel="Specification">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>PIPING-SPEC</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>	
+        <ECProperty propertyName="WEIGHT" typeName="double" displayLabel="Weight">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>WEIGHT</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+        <ECProperty propertyName="CODE" typeName="string" description="name of area." displayLabel="Code">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>ITEM-CODE</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+        <ECProperty propertyName="DESCRIPTION" typeName="string" description="" displayLabel="Description">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>ITEM-DESCRIPTION</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+        <ECProperty propertyName="ADDITIONAL_CODE" typeName="string" description="code uses to describe the Plant Unit" displayLabel="Additional Code">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>UNIQUE-COMPONENT-IDENTIFIER</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+    </ECClass>
+	<ECClass typeName="WELD_NECK_FLANGE" description=" " displayLabel="Gate Valve" isDomainClass="True">
+        <ECProperty propertyName="SPECIFICATION" typeName="string" displayLabel="Specification">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>PIPING-SPEC</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>	
+        <ECProperty propertyName="WEIGHT" typeName="double" displayLabel="Weight">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>WEIGHT</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+        <ECProperty propertyName="CODE" typeName="string" description="name of area." displayLabel="Code">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>ITEM-CODE</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+        <ECProperty propertyName="DESCRIPTION" typeName="string" description="" displayLabel="Description">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>ITEM-DESCRIPTION</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+        <ECProperty propertyName="ADDITIONAL_CODE" typeName="string" description="code uses to describe the Plant Unit" displayLabel="Additional Code">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>UNIQUE-COMPONENT-IDENTIFIER</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+    </ECClass>
+	<ECClass typeName="STUD_BOLT" description=" " displayLabel="Gate Valve" isDomainClass="True">
+        <ECProperty propertyName="SPECIFICATION" typeName="string" displayLabel="Specification">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>PIPING-SPEC</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>	
+        <ECProperty propertyName="WEIGHT" typeName="double" displayLabel="Weight">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>WEIGHT</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+        <ECProperty propertyName="CODE" typeName="string" description="name of area." displayLabel="Code">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>ITEM-CODE</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+        <ECProperty propertyName="DESCRIPTION" typeName="string" description="" displayLabel="Description">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>ITEM-DESCRIPTION</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+        <ECProperty propertyName="ADDITIONAL_CODE" typeName="string" description="code uses to describe the Plant Unit" displayLabel="Additional Code">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>UNIQUE-COMPONENT-IDENTIFIER</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+    </ECClass>
+	<ECClass typeName="GASKET" description=" " displayLabel="Gate Valve" isDomainClass="True">
+        <ECProperty propertyName="SPECIFICATION" typeName="string" displayLabel="Specification">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>PIPING-SPEC</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>	
+        <ECProperty propertyName="WEIGHT" typeName="double" displayLabel="Weight">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>WEIGHT</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+        <ECProperty propertyName="CODE" typeName="string" description="name of area." displayLabel="Code">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>ITEM-CODE</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+        <ECProperty propertyName="DESCRIPTION" typeName="string" description="" displayLabel="Description">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>ITEM-DESCRIPTION</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+        <ECProperty propertyName="ADDITIONAL_CODE" typeName="string" description="code uses to describe the Plant Unit" displayLabel="Additional Code">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>UNIQUE-COMPONENT-IDENTIFIER</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+    </ECClass>
+	<ECClass typeName="WELD" description=" " displayLabel="WELD" isDomainClass="True">
+        <ECProperty propertyName="SPECIFICATION" typeName="string" displayLabel="Line Number">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>PIPING-SPEC</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>	
+        <ECProperty propertyName="WEIGHT" typeName="double" displayLabel="Line Number">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>WEIGHT</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+        <ECProperty propertyName="CODE" typeName="string" description="name of area." displayLabel="Name">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>ITEM-CODE</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+        <ECProperty propertyName="DESCRIPTION" typeName="string" description="" displayLabel="Service">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>ITEM-DESCRIPTION</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+        <ECProperty propertyName="ADDITIONAL_CODE" typeName="string" description="code uses to describe the Plant Unit" displayLabel="Unit">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>UNIQUE-COMPONENT-IDENTIFIER</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+    </ECClass>	
+	<ECClass typeName="TEE" description="Tee" displayLabel="Tee" isDomainClass="True">
+        <ECProperty propertyName="WEIGHT" typeName="double" displayLabel="Weight">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>WEIGHT</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+        <ECProperty propertyName="CODE" typeName="string" description="Code" displayLabel="Code">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>ITEM-CODE</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+        <ECProperty propertyName="ALIACE" typeName="string" description="Additional Code" displayLabel="Additional Code">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>UCI</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+    </ECClass>
+	<ECClass typeName="PIPE_BEND" description="BEND" displayLabel="BEND" isDomainClass="True">
+        <ECProperty propertyName="WEIGHT" typeName="double" displayLabel="Weight">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>WEIGHT</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+        <ECProperty propertyName="CODE" typeName="string" description="Code" displayLabel="Code">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>ITEM-CODE</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+        <ECProperty propertyName="ALIAC" typeName="string" description="Additional Code" displayLabel="Additional Code">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>UNIQUE-COMPONENT-IDENTIFIER</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+		<ECProperty propertyName="SPECIFICATION" typeName="string" displayLabel="Line Number">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>PIPING-SPEC</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+		<ECProperty propertyName="ANGLE" typeName="string" displayLabel="Line Number">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>ANGLE</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+		<ECProperty propertyName="SHOP_FIELD" typeName="string" displayLabel="Line Number">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>CATEGORY</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>		
+    </ECClass>	
+	<ECClass typeName="LONG_RADIUS_90_DEGREE_PIPE_ELBOW" description="PIPE_ELBOW_90_DEGREE" displayLabel="ELBOW" isDomainClass="True">
+        <ECProperty propertyName="WEIGHT" typeName="double" displayLabel="Weight">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>WEIGHT</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+        <ECProperty propertyName="CODE" typeName="string" description="Code" displayLabel="Code">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>ITEM-CODE</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+        <ECProperty propertyName="ALIAC" typeName="string" description="Additional Code" displayLabel="Additional Code">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>UNIQUE-COMPONENT-IDENTIFIER</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+		<ECProperty propertyName="SPECIFICATION" typeName="string" displayLabel="Line Number">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>PIPING-SPEC</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+		<ECProperty propertyName="ANGLE" typeName="string" displayLabel="Line Number">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>ANGLE</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+		<ECProperty propertyName="SHOP_FIELD" typeName="string" displayLabel="Line Number">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>CATEGORY</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>		
+    </ECClass>	
+	<ECClass typeName="SUPPORT" description=" " displayLabel="Support" isDomainClass="True">
+        <ECProperty propertyName="WEIGHT" typeName="double" displayLabel="Line Number">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>WEIGHT</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+        <ECProperty propertyName="CODE" typeName="string" description="name of area." displayLabel="Name">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>ITEM-CODE</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+        <ECProperty propertyName="DESCRIPTION" typeName="string" description="" displayLabel="Service">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>ITEM-DESCRIPTION</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+        <ECProperty propertyName="ADDITIONAL_CODE" typeName="string" description="code uses to describe the Plant Unit" displayLabel="Unit">
+            <ECCustomAttributes>
+                <TransformationValueMap xmlns="Bentley_Standard_CustomAttributes.01.01">
+                    <Entries />
+                    <Name>UCI</Name>
+                </TransformationValueMap>
+            </ECCustomAttributes>
+        </ECProperty>
+    </ECClass>
+</ECSchema>

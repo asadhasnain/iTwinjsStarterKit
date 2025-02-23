@@ -1,0 +1,87 @@
+{
+    "ECClass": [
+        {
+            "typeName": "ProcessPhysical.PIPING_NETWORK_SYSTEM",
+            "pcfName": "PIPELINE-REFERENCE",
+            "ECProperty": [
+            {
+                "propertyName": "sPECIFICATION",
+                "pcfName": "PIPING-SPEC"
+            },
+            {
+                "propertyName": "uNIT_NAME",
+                "pcfName": "ATTRIBUTE5"
+            },
+            {
+                "propertyName": "sERVICE_NAME",
+                "pcfName": "ATTRIBUTE3"
+            },
+            {
+                "propertyName": "nUMBER",
+                "pcfName": "ATTRIBUTE4"
+            },
+            {
+                "propertyName": "nOMINAL_DIAMETER",
+                "pcfName": "ATTRIBUTE7"
+            },
+            {
+                "propertyName": "pLANT_AREA",
+                "pcfName": "ATTRIBUTE6"
+            }
+            ]
+        },
+        {
+            "typeName": "ProcessPhysical.PIPE",
+            "pcfName": "PIPE",
+            "Relationship": 
+            {
+                "relationshipName": "ProcessPhysical.PIPING_COMPONENT_HAS_PORT",
+                "ECClass" :  {
+                    "typeName": "PORT",
+                    "pcfName": "END-POINT",
+                    "ECProperty": [
+                    {
+                        "propertyName": "lOCATION_X",
+                        "pcfName": ""
+                    },
+                    {
+                        "propertyName": "lOCATION_Y",
+                        "pcfName": ""
+                    },
+                    {
+                        "propertyName": "lOCATION_Z",
+                        "pcfName": ""
+                    },
+                    {
+                        "propertyName": "eND_PREPARATION",
+                        "pcfName": ""
+                    }
+                    ]
+                }
+            },
+            "ECProperty": [
+            {
+                "propertyName": "sPECIFICATION",
+                "pcfName": "PIPING-SPEC"
+            },
+            {
+                "propertyName": "wEIGHT",
+                "pcfName": "WEIGHT"
+            },
+            {
+                "propertyName": "cODE",
+                "pcfName": "ITEM-CODE"
+            },
+            {
+                "propertyName": "dESCRIPTION",
+                "pcfName": "ITEM-DESCRIPTION"
+            },
+            {
+                "propertyName": "aDDITIONAL_CODE",
+                "pcfName": "UNIQUE-COMPONENT-IDENTIFIER"
+            }
+            ]
+        }
+        
+    ]
+}

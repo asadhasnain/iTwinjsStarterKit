@@ -4,15 +4,20 @@
  * It uses environment variables for configuration and performs authentication using NodeCliAuthorizationClient.
  */
 
-import { BriefcaseDb, BriefcaseManager, IModelHost, KnownLocations } from "@itwin/core-backend";
-import { Logger } from "@itwin/core-bentley";
-import { ElementProps, RequestNewBriefcaseProps } from "@itwin/core-common";
+import { BriefcaseDb, BriefcaseManager, ECSqlStatement, IModelHost, KnownLocations } from "@itwin/core-backend";
+import { DbResult, Id64String, Logger } from "@itwin/core-bentley";
+import { PhysicalElementProps, RequestNewBriefcaseProps } from "@itwin/core-common";
 import { BackendIModelsAccess } from "@itwin/imodels-access-backend";
 import { NodeCliAuthorizationClient } from "@itwin/node-cli-authorization";
 import * as dotenv from "dotenv";
+import fs from "fs";
 import path from "path";
-import { initializeLogging } from "./BackendLogger";
-import { readECToPCFMapping } from "./ReadECtoPCFMapping";
+import { initializeLogging } from "./Loggers/BackendLogger";
+import { ITransformer } from "./Transformers/ITransformer";
+import { PcfTransformer } from "./Transformers/PcfTransformer";
+import { readECToPCFMapping } from "./Mappings/ReadECtoPCFMapping";
+import { IRelationshipTransformer } from "./Transformers/IRelationshipTransformer";
+import { RelationshipTransformer } from "./Transformers/RelationshipTransformer";
 
 // Load environment variables from .env file
 dotenv.config();
@@ -44,6 +49,29 @@ const startupIModelHost = async (): Promise<void> => {
   await IModelHost.startup({ cacheDir, authorizationClient: authClient, hubAccess: new BackendIModelsAccess() });
 };
 
+const writePCFFile = (filename: string, content: string): void => {
+  fs.writeFileSync(filename, content);
+  console.log(`PCF file generated successfully: ${filename}`);
+};
+
+// Function to get target instance ID
+function getTargetInstance(briefcaseDb: BriefcaseDb, relationshipName: string, sourceECInstanceId: Id64String): Id64String[] {
+
+  const query = `SELECT TargetECInstanceId FROM ${relationshipName} WHERE SourceECInstanceId = ${sourceECInstanceId}`;
+  const targetIds: Id64String[] = [];
+
+
+  briefcaseDb.withPreparedStatement(query, (stmt: ECSqlStatement) => {
+  
+    while (stmt.step() === DbResult.BE_SQLITE_ROW) {
+      const row: any = stmt.getRow();
+      targetIds.push(row.targetId);
+    }
+  });
+  return targetIds; // No relation found
+}
+
+
 /**
  * Downloads a briefcase, processes its elements, and releases the briefcase.
  * @async
@@ -63,22 +91,39 @@ const downloadAndProcessBriefcase = async (): Promise<void> => {
 
   const ecToPcfMapping = readECToPCFMapping();
 
+  let pcfContent = `ISOGEN-FILES\nUNITS-BORE INCHES\nUNITS-CO-ORDS MM\nUNITS-BOLT-LENGTH MM\nUNITS-WEIGHT KG\n`;
+
+
   ecToPcfMapping.ECClass.forEach((ecClass) => {
-    Logger.logInfo("Backend.BriefcaseManager", `EC Class: ${ecClass.typeName}, PCF Name: ${ecClass.pcfName}`); 
+    // Logger.logInfo("Backend.BriefcaseManager", `EC Class: ${ecClass.typeName}, PCF Name: ${ecClass.pcfName}`); 
     
-    const idSet = briefcaseDb.queryEntityIds({ from: `ProcessPhysical.${ecClass.typeName}`});
+    const idSet = briefcaseDb.queryEntityIds({ from: `${ecClass.typeName}`});
+
+    const transformer: ITransformer = new PcfTransformer();
+    const relationshipTransformer: IRelationshipTransformer = new RelationshipTransformer();
 
     for (const id of idSet) {
       const element = briefcaseDb.elements.getElement(id);
-      const elementProps = briefcaseDb.elements.getElementProps(element);
 
-      ecClass.ECProperty.forEach((ecProperty) => {
-        // Logger.logTrace("Backend.ECPProperty", `EC Property: ${ecProperty.propertyName}, PCF Name: ${ecProperty.pcfName}`);
-         if (ecProperty.propertyName in elementProps)
-          Logger.logInfo("Backend.BriefcaseManager", `EC Property: ${elementProps[ecProperty.propertyName as keyof ElementProps]}, PCF Name: ${ecProperty.pcfName}`);
-      });
+      const elementProps = briefcaseDb.elements.getElementProps<PhysicalElementProps>({id: element.id, wantGeometry: false});
+
+      pcfContent += transformer.transform(ecClass, elementProps);
+
+      if(ecClass.Relationship) {
+          const targetIds: Id64String[] = getTargetInstance(briefcaseDb, ecClass.Relationship.relationshipName, element.id);
+
+          Logger.logTrace("Backend.BriefcaseManager", `Target IDs: ${targetIds} for Source ID: ${element.id}`);
+          
+          for (const targetId of targetIds) { 
+            const targetElementProps = briefcaseDb.elements.getElementProps<PhysicalElementProps>({id: targetId, wantGeometry: false});
+            pcfContent += relationshipTransformer.transform(ecClass.Relationship, elementProps, targetElementProps);
+        }
+      }
+
     }
   });
+
+  writePCFFile('output.pcf', pcfContent);
 
 
   briefcaseDb.close();
@@ -103,7 +148,7 @@ const downloadAndProcessBriefcase = async (): Promise<void> => {
     await startupIModelHost();
     await downloadAndProcessBriefcase();
 
-    await authClient.signOut(); // Sign out of iTwin.js
+    // await authClient.signOut(); // Sign out of iTwin.js
   } catch (error) {
     console.error("Error during execution:", error);
   }
