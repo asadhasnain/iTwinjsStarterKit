@@ -18,6 +18,7 @@ import { PcfTransformer } from "./Transformers/PcfTransformer";
 import { readECToPCFMapping } from "./Mappings/ReadECtoPCFMapping";
 import { IRelationshipTransformer } from "./Transformers/IRelationshipTransformer";
 import { RelationshipTransformer } from "./Transformers/RelationshipTransformer";
+import { TransformerFactory } from "./Transformers/TransformerFactory";
 
 // Load environment variables from .env file
 dotenv.config();
@@ -91,7 +92,7 @@ const downloadAndProcessBriefcase = async (): Promise<void> => {
 
   const ecToPcfMapping = readECToPCFMapping();
 
-  let pcfContent = `ISOGEN-FILES\nUNITS-BORE INCHES\nUNITS-CO-ORDS MM\nUNITS-BOLT-LENGTH MM\nUNITS-WEIGHT KG\n`;
+  let pcfContent = `ISOGEN-FILES\nUNITS-BORE INCHES\nUNITS-CO-ORDS MM\nUNITS-BOLT-LENGTH MM\nUNITS-WEIGHT KGS\n`;
 
 
   ecToPcfMapping.ECClass.forEach((ecClass) => {
@@ -99,21 +100,16 @@ const downloadAndProcessBriefcase = async (): Promise<void> => {
     
     const idSet = briefcaseDb.queryEntityIds({ from: `${ecClass.typeName}`});
 
-    const transformer: ITransformer = new PcfTransformer();
-    const relationshipTransformer: IRelationshipTransformer = new RelationshipTransformer();
-
     for (const id of idSet) {
       const element = briefcaseDb.elements.getElement(id);
 
       const elementProps = briefcaseDb.elements.getElementProps<PhysicalElementProps>({id: element.id, wantGeometry: false});
-
+      const transformer: ITransformer = TransformerFactory.getTransformer(ecClass.typeName);
       pcfContent += transformer.transform(ecClass, elementProps);
 
       if(ecClass.Relationship) {
           const targetIds: Id64String[] = getTargetInstance(briefcaseDb, ecClass.Relationship.relationshipName, element.id);
-
-          Logger.logTrace("Backend.BriefcaseManager", `Target IDs: ${targetIds} for Source ID: ${element.id}`);
-          
+          const relationshipTransformer: IRelationshipTransformer = TransformerFactory.getRelationshipTransformer(ecClass.Relationship.relationshipName);
           for (const targetId of targetIds) { 
             const targetElementProps = briefcaseDb.elements.getElementProps<PhysicalElementProps>({id: targetId, wantGeometry: false});
             pcfContent += relationshipTransformer.transform(ecClass.Relationship, elementProps, targetElementProps);
