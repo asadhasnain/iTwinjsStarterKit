@@ -13,11 +13,7 @@ import * as dotenv from "dotenv";
 import fs from "fs";
 import path from "path";
 import { initializeLogging } from "./Loggers/BackendLogger";
-import { ITransformer } from "./Transformers/ITransformer";
-import { PcfTransformer } from "./Transformers/PcfTransformer";
 import { readECToPCFMapping } from "./Mappings/ReadECtoPCFMapping";
-import { IRelationshipTransformer } from "./Transformers/IRelationshipTransformer";
-import { RelationshipTransformer } from "./Transformers/RelationshipTransformer";
 import { TransformerFactory } from "./Transformers/TransformerFactory";
 
 // Load environment variables from .env file
@@ -81,8 +77,8 @@ function getTargetInstance(briefcaseDb: BriefcaseDb, relationshipName: string, s
  */
 const downloadAndProcessBriefcase = async (): Promise<void> => {
   const requestNewBriefcaseProps: RequestNewBriefcaseProps = {
-    iTwinId: iTwinId, 
-    iModelId: iModelId,
+    iTwinId,
+    iModelId,
   };
 
   const localBriefcaseProps = await BriefcaseManager.downloadBriefcase(requestNewBriefcaseProps);
@@ -91,39 +87,42 @@ const downloadAndProcessBriefcase = async (): Promise<void> => {
   Logger.logInfo("Backend.BriefcaseManager", `Opened Briefcase Id: ${briefcaseDb.briefcaseId}`);
 
   const ecToPcfMapping = readECToPCFMapping();
+  let pcfContent = generatePCFHeader();
 
-  let pcfContent = `ISOGEN-FILES\nUNITS-BORE INCHES\nUNITS-CO-ORDS MM\nUNITS-BOLT-LENGTH MM\nUNITS-WEIGHT KGS\n`;
-
-
-  ecToPcfMapping.ECClass.forEach((ecClass) => {
-    // Logger.logInfo("Backend.BriefcaseManager", `EC Class: ${ecClass.typeName}, PCF Name: ${ecClass.pcfName}`); 
-    
-    const idSet = briefcaseDb.queryEntityIds({ from: `${ecClass.typeName}`});
+  for (const ecClass of ecToPcfMapping.ECClass) {
+    const idSet = briefcaseDb.queryEntityIds({ from: ecClass.typeName });
 
     for (const id of idSet) {
-      const element = briefcaseDb.elements.getElement(id);
-
-      const elementProps = briefcaseDb.elements.getElementProps<PhysicalElementProps>({id: element.id, wantGeometry: false});
-      const transformer: ITransformer = TransformerFactory.getTransformer(ecClass.typeName);
+      const elementProps = briefcaseDb.elements.getElementProps<PhysicalElementProps>({ id, wantGeometry: false });
+      const transformer = TransformerFactory.getTransformer(ecClass.typeName);
       pcfContent += transformer.transform(ecClass, elementProps);
 
-      if(ecClass.Relationship) {
-          const targetIds: Id64String[] = getTargetInstance(briefcaseDb, ecClass.Relationship.relationshipName, element.id);
-          const relationshipTransformer: IRelationshipTransformer = TransformerFactory.getRelationshipTransformer(ecClass.Relationship.relationshipName);
-          for (const targetId of targetIds) { 
-            const targetElementProps = briefcaseDb.elements.getElementProps<PhysicalElementProps>({id: targetId, wantGeometry: false});
-            pcfContent += relationshipTransformer.transform(ecClass.Relationship, elementProps, targetElementProps);
-        }
+      if (ecClass.Relationship) {
+        pcfContent += processRelationships(briefcaseDb, ecClass, elementProps);
       }
-
     }
-  });
+  }
 
   writePCFFile('output.pcf', pcfContent);
-
-
   briefcaseDb.close();
   await BriefcaseManager.releaseBriefcase(accessToken, localBriefcaseProps);
+};
+
+const generatePCFHeader = (): string => {
+  return `ISOGEN-FILES\nUNITS-BORE INCHES\nUNITS-CO-ORDS MM\nUNITS-BOLT-LENGTH MM\nUNITS-WEIGHT KGS\n`;
+};
+
+const processRelationships = (briefcaseDb: BriefcaseDb, ecClass: any, elementProps: PhysicalElementProps): string => {
+  let pcfContent = '';
+  const targetIds = getTargetInstance(briefcaseDb, ecClass.Relationship.relationshipName, elementProps.id!);
+  const relationshipTransformer = TransformerFactory.getRelationshipTransformer(ecClass.Relationship.relationshipName);
+
+  for (const targetId of targetIds) {
+    const targetElementProps = briefcaseDb.elements.getElementProps<PhysicalElementProps>({ id: targetId, wantGeometry: false });
+    pcfContent += relationshipTransformer.transform(ecClass.Relationship, elementProps, targetElementProps);
+  }
+
+  return pcfContent;
 };
 
 /**
