@@ -16,8 +16,9 @@ export class PcfTransformer implements ITransformer {
 
     protected mapProperties(ecClass: ECClass, elementProps: PhysicalElementProps, pcfContent: string) {
         ecClass.ECProperty.forEach((ecProperty) => {
-            if ((elementProps as any)[ecProperty.propertyName] !== undefined)
-                pcfContent += `\t${ecProperty.pcfName} ${(elementProps as any)[ecProperty.propertyName]}\n`;
+            const propertyValue = (elementProps as any)[ecProperty.propertyName];
+            if (propertyValue !== undefined)
+                pcfContent += `\t${ecProperty.pcfName} ${propertyValue}\n`;
         });
         return pcfContent;
     }

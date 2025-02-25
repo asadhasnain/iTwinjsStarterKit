@@ -56,3 +56,7 @@ obj/
 bin/
 
 tmp/
+
+output*.pcf
+
+log.txt

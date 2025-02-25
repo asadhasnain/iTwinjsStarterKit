@@ -94,6 +94,7 @@ const downloadAndProcessBriefcase = async (): Promise<void> => {
 
     for (const id of idSet) {
       const elementProps = briefcaseDb.elements.getElementProps<PhysicalElementProps>({ id, wantGeometry: false });
+      Logger.logInfo("Backend.BriefcaseManager", `Processing element: ${JSON.stringify(elementProps, null, 2)}`);
       const transformer = TransformerFactory.getTransformer(ecClass.typeName);
       pcfContent += transformer.transform(ecClass, elementProps);
 
@@ -119,6 +120,7 @@ const processRelationships = (briefcaseDb: BriefcaseDb, ecClass: any, elementPro
 
   for (const targetId of targetIds) {
     const targetElementProps = briefcaseDb.elements.getElementProps<PhysicalElementProps>({ id: targetId, wantGeometry: false });
+    Logger.logInfo("Backend.BriefcaseManager", `Processing element: ${JSON.stringify(targetElementProps, null, 2)}`);
     pcfContent += relationshipTransformer.transform(ecClass.Relationship, elementProps, targetElementProps);
   }
 
