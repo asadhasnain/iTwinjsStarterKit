@@ -1,0 +1,32 @@
+{
+  "name": "seq-logger",
+  "version": "1.0.0",
+  "description": "The sample explains how to use the seq logger in the iTwin.js backend.",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc 1>&2",
+    "start": "node ./dist/index.js",
+    "test": "mocha"
+  },
+  "keywords": [
+    "Node",
+    "CLI",
+    "Authorization",
+    "iTwin.js"
+  ],
+  "author": "Asad Hasnain",
+  "license": "MIT",
+  "dependencies": {
+    "bunyan": "^1.8.15",
+    "bunyan-seq": "^1.0.0",
+    "dotenv": "^16.4.7",
+    "npm": "^10.9.2",
+    "pino-seq": "^1.2.0"
+  },
+  "devDependencies": {
+    "@types/bunyan": "^1.8.11",
+    "@types/node": "^22.13.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  }
+}
