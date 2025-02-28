@@ -17,7 +17,10 @@ dotenv.config();
 
   initializeLogging(process.env.LOG_LEVEL);
 
-  Logger.logTrace("Logging.ConsoleLogger", "Print this line if default logging is set to Info or lower");
-  Logger.logInfo("Logging.ConsoleLogger", "Logging initialized");
+  Logger.logError("Logging.SeqIntegrated", "Logging Seq Error");
+  Logger.logWarning("Logging.SeqIntegrated", "Logging Seq Warning");
+  Logger.logInfo("Logging.SeqIntegrated", "Logging Seq Info");
+  Logger.logTrace("Logging.SeqIntegrated", "Logging Seq Trace");
+
   
 })();
