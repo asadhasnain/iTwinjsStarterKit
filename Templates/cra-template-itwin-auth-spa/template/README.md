@@ -6,25 +6,52 @@ This is a template for creating a Single Page Application (SPA) with Bentley IMS
 
 To use this template, you need to have Node.js and npm installed on your machine.
 
-### Installation
+## Installation
 
-1. Create a new React app using this template:
+## Create a new React app using this template:
 
-    ```bash
+```bash
     npx create-react-app my-itwin-app --template itwin-auth-spa
-    ```
+```
 
-2. Navigate to your project directory:
+## Navigate to your project directory:
 
-    ```bash
+```bash
     cd my-itwin-app
-    ```
+```
 
-3. Start the development server:
+## Register Client
 
-    ```bash
-    npm start
-    ```
+a. Choose "SPA" as your application type when [registering for use with this client](https://developer.bentley.com/register/).
+
+![alt text](RegisterSinglePageApplication.png)
+
+b. After the application is registered, you will get the clientId. Copy it.
+
+c. Environment Variables
+
+Prior to running the app, you will need to add OIDC client configuration to the variables in the .env file:
+
+```plaintext
+    # ---- Authorization Client Settings ----
+    IMJS_AUTH_CLIENT_CLIENT_ID=""
+    IMJS_AUTH_CLIENT_REDIRECT_URI=""
+    IMJS_AUTH_CLIENT_LOGOUT_URI=""
+    IMJS_AUTH_CLIENT_SCOPES=""
+```
+
+d. Client_ID is used in `Auth.ts` file creating the **BrowserAuthorizationClient**:
+
+```typescript
+    const client = new BrowserAuthorizationClient({
+                        clientId: // find at developer.bentley.com
+                        redirectUri: // find/set at developer.bentley.com
+                        scope: // find/set at developer.bentley.com
+                        authority: // ims.bentley.com
+                        postSignoutRedirectUri: // find/set at developer.bentley.com (see note below)
+                        responseType: "code"
+                        });
+```
 
 ## Project Structure
 
