@@ -1,7 +1,6 @@
 
 import React from "react";
 import { useAuth } from "./hooks/useAuth";
-import IModelDetails from "./IModelDetails";
 
 /**
  * The main application component.
