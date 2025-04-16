@@ -1,57 +1,27 @@
-# iTwin SPA Template for Create React App
+# iTwinUI Basics
 
-This is a template for creating a Single Page Application (SPA) using the iTwin.js library with Create React App.
+This project is a basic setup for a React application using [iTwinUI](https://itwin.github.io/iTwinUI/) components, built with TypeScript and Vite.
 
-## Getting Started
+## Features
 
-To use this template, you need to have Node.js and npm installed on your machine.
+- **iTwinUI Components**: Pre-styled UI components for building professional interfaces.
+- **Vite**: Fast development server and build tool.
 
-### Installation
+## Dependencies
 
-1. Create a new React app using this template:
+    npm install
 
-    ```bash
-    npx create-react-app my-itwin-app --template itwin-spa
-    ```
+## Development
 
-2. Navigate to your project directory:
+Start the development server:
 
-    ```bash
-    cd my-itwin-app
-    ```
+    npm run dev
 
-3. Start the development server:
+## Usage
 
-    ```bash
-    npm start
-    ```
+The app demonstrates the use of iTwinUI components such as buttons, checkboxes, and input fields. It also includes a theme toggle button to switch between light and dark modes.
 
-## Project Structure
+## References
 
-The project structure is as follows:
-
-```plaintext
-my-itwin-app/
-├── node_modules/
-├── public/
-├── src/
-│   ├── App.tsx
-│   ├── index.tsx
-│   └── ...
-├── .gitignore
-├── package.json
-├── README.md
-└── tsconfig.json
-```
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.
-
-### `npm start`
-
-Runs the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[iTwinUI](https://itwinui.bentley.com/)
+[Vite](https://vite.dev/guide/)
