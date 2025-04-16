@@ -1,55 +1,57 @@
-# Single Page Application (SPA) Authentication and Authorization
+# iTwin SPA Template for Create React App
 
-This is a very simple starting guide to implement your authorization for a SPA application
+This is a template for creating a Single Page Application (SPA) using the iTwin.js library with Create React App.
 
-## Register Client
+## Getting Started
 
-1. Choose "SPA" as your application type when [registering for use with this client](https://developer.bentley.com/register/).
+To use this template, you need to have Node.js and npm installed on your machine.
 
-    ![alt text](RegisterSinglePageApplication.png)
+### Installation
 
-2. After the application is registered, you will get the clientId. Copy it.
+1. Create a new React app using this template:
 
-3. Environment Variables
-
-    Prior to running the app, you will need to add OIDC client configuration to the variables in the .env file:
-
-        ```
-            # ---- Authorization Client Settings ----
-            IMJS_AUTH_CLIENT_CLIENT_ID=""
-            IMJS_AUTH_CLIENT_REDIRECT_URI=""
-            IMJS_AUTH_CLIENT_LOGOUT_URI=""
-            IMJS_AUTH_CLIENT_SCOPES=""
-        ```
-
-4. Client_ID is used in `index.ts` file creating the **BrowserAuthorizationClient**:
-
-    ```typescript
-    const client = new BrowserAuthorizationClient({
-                        clientId: // find at developer.bentley.com
-                        redirectUri: // find/set at developer.bentley.com
-                        scope: // find/set at developer.bentley.com
-                        authority: // ims.bentley.com
-                        postSignoutRedirectUri: // find/set at developer.bentley.com (see note below)
-                        responseType: "code"
-                        });
+    ```bash
+    npx create-react-app my-itwin-app --template itwin-spa
     ```
 
-## Install Dependencies
+2. Navigate to your project directory:
 
-   ```sh
-   npm install
-   ```
+    ```bash
+    cd my-itwin-app
+    ```
 
-## Build and Start Project
+3. Start the development server:
 
-   ```sh  
-   npm build
-   npm start
-   ```
+    ```bash
+    npm start
+    ```
 
-## References
+## Project Structure
 
-1. [Authorize Single-Page Application (SPA)](https://developer.bentley.com/tutorials/authorize-spa/)
-2. [Auth Clients Browser Based](https://github.com/iTwin/auth-clients/blob/main/packages/browser/README.md)
-3. [Browser Authorization Package](https://www.npmjs.com/package/@itwin/browser-authorization)
+The project structure is as follows:
+
+```plaintext
+my-itwin-app/
+├── node_modules/
+├── public/
+├── src/
+│   ├── App.tsx
+│   ├── index.tsx
+│   └── ...
+├── .gitignore
+├── package.json
+├── README.md
+└── tsconfig.json
+```
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.
+
+### `npm start`
+
+Runs the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
