@@ -1,12 +1,8 @@
-/*---------------------------------------------------------------------------------------------
- * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
- * See LICENSE.md in the project root for license terms and full copyright notice.
- *--------------------------------------------------------------------------------------------*/
 import {
-    SvgConfiguration,
-    SvgFolder,
-    SvgHome,
-    SvgModel,
+  SvgConfiguration,
+  SvgFolder,
+  SvgHome,
+  SvgModel,
 } from '@itwin/itwinui-icons-react';
 import { SidenavButton, SideNavigation } from '@itwin/itwinui-react';
 

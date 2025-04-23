@@ -1,9 +1,10 @@
-import { ThemeProvider } from '@itwin/itwinui-react';
-import '@itwin/itwinui-react/styles.css';
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
+import { IconButton, ThemeProvider } from '@itwin/itwinui-react';
+import '@itwin/itwinui-react/styles.css';
 import './styles.css';
+import { ThemeContext } from './Theme/ThemeContext';
 
 const rootElement = document.getElementById('root')!;
 const root = createRoot(rootElement);
@@ -14,9 +15,11 @@ const AppWithWrapper = () => {
   );
 
   return (
-    <ThemeProvider className='app-wrapper' theme={theme}>
-      <App />
-    </ThemeProvider>
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      <ThemeProvider theme={theme} className='custom-theme'>
+        <App />
+      </ThemeProvider>
+    </ThemeContext.Provider>
   );
 };
 

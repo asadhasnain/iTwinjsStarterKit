@@ -46,25 +46,19 @@ export const Breadcrumbs = () => (
       />,
       <HeaderButton
         key='iModelBreadcrumb'
-        name='iModel Beta'
-        description='0x0987654321'
+        name='iModel Alpha'
+        description='Alpha'
         startIcon={<SvgModel />}
         onClick={() => {}}
         isActive
         menuItems={() => [
-          <MenuItem key='iModelA' sublabel='0x0123456789' startIcon={<SvgModel />}>
+          <MenuItem key='iModelA' sublabel='Alpha' startIcon={<SvgModel />} endIcon={<SvgCheckmark />} isSelected>
             iModel Alpha
           </MenuItem>,
-          <MenuItem
-            key='iModelB'
-            sublabel='0x0987654321'
-            startIcon={<SvgModel />}
-            isSelected
-            endIcon={<SvgCheckmark />}
-          >
+          <MenuItem key='iModelB' sublabel='Beta' startIcon={<SvgModel />} >
             iModel Beta
           </MenuItem>,
-          <MenuItem key='iModelC' sublabel='0x0001337420' startIcon={<SvgModel />}>
+          <MenuItem key='iModelC' sublabel='Charlie' startIcon={<SvgModel />}>
             iModel Charlie
           </MenuItem>,
           <MenuDivider key='divider' />,

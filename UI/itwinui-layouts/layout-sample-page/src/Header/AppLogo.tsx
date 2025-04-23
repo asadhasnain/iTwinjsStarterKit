@@ -4,6 +4,6 @@ import { SvgImodelHollow } from '@itwin/itwinui-icons-react';
 
 export const AppLogo = () => (
   <HeaderLogo logo={<SvgImodelHollow />}>
-    iTwinUI-layouts
+    iTwinUI Layout Sample
   </HeaderLogo>
 );
