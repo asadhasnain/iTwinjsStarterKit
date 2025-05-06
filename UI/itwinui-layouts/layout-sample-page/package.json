@@ -1,0 +1,28 @@
+{
+  "name": "itwinui-layouts-sample-page",
+  "type": "module",
+  "description": "iTwinUI Layout Sample Page.",
+  "version": "0.1.0",
+  "private": true,
+  "main": "src/index.tsx",
+  "dependencies": {
+    "@itwin/itwinui-icons-react": "2",
+    "@itwin/itwinui-layouts-react": "^0.4.1",
+    "@itwin/itwinui-react": "3",
+    "react": "19",
+    "react-dom": "19",
+    "react-router-dom": "^7.5.1"
+  },
+  "devDependencies": {
+    "@types/react": "19",
+    "@types/react-dom": "19",
+    "@vitejs/plugin-react": "4",
+    "typescript": "5",
+    "vite": "6"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  }
+}

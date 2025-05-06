@@ -1,0 +1,43 @@
+{
+  "package": {
+    "dependencies": {
+      "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+      "@bentley/react-scripts": "^5.0.7",
+      "@itwin/browser-authorization": "^1.1.4",
+      "@itwin/core-bentley": "^4.10.6",
+      "ajv": "^8.17.1",
+      "axios": "^1.7.9",
+      "dotenv": "^16.4.7",
+      "react": "^19.0.0",
+      "react-dom": "^19.0.0",
+      "typescript": "~5.0.2"
+    },
+    "devDependencies": {
+      "@types/node": "^18.19.75",
+      "@types/react": "^19.0.0",
+      "@types/react-dom": "^19.0.0"
+    },
+    "scripts": {
+      "start": "react-scripts --max_old_space_size=4096 start",
+      "build": "react-scripts --max_old_space_size=4096 build",
+      "test": "react-scripts --max_old_space_size=4096 test",
+      "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+      "extends": [
+        "react-app",
+        "react-app/jest"
+      ]
+    },
+    "browserslist": [
+      "last 4 chrome version",
+      "last 4 firefox version",
+      "last 4 safari version",
+      "last 4 ios version",
+      "last 4 ChromeAndroid version",
+      "last 4 edge version",
+      "not dead",
+      "not <0.2%"
+    ]
+  }
+}

@@ -1,6 +1,6 @@
-# iTwin SPA Template for Create React App
+# iTwin SPA with Authorization Template for Create React App
 
-This is a template for creating a Single Page Application (SPA) using the iTwin.js library with Create React App.
+This is a template for creating a Single Page Application (SPA) with Bentley IMS Authorization.
 
 ## Getting Started
 
@@ -11,7 +11,7 @@ To use this template, you need to have Node.js and npm installed on your machine
 1. Create a new React app using this template:
 
     ```bash
-    npx create-react-app my-itwin-app --template itwin-spa
+    npx create-react-app my-itwin-app --template itwin-auth-spa
     ```
 
 2. Navigate to your project directory:

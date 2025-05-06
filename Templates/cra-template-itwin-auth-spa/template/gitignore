@@ -28,7 +28,7 @@ jspm_packages/
 
 # dotenv environment variables file
 .env
-.env.local
+
 # IDEs and editors
 .idea/
 .vscode/
@@ -48,15 +48,3 @@ dist/
 coverage/
 
 .configStore/
-
-build/
-
-obj/
-
-bin/
-
-tmp/
-
-output*.pcf
-
-log.txt

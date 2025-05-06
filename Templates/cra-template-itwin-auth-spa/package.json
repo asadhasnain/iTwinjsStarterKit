@@ -1,6 +1,6 @@
 {
-  "name": "cra-template-itwin-spa",
-  "version": "1.0.3",
+  "name": "cra-template-itwin-auth-spa",
+  "version": "1.0.2",
   "keywords": [
     "react",
     "create-react-app",
@@ -11,11 +11,11 @@
     "iTwin",
     "SPA"
   ],
-  "description": "The iTwin.js SPA template for Create React App web applications.",
+  "description": "The iTwin.js Authorization SPA template for Create React App web applications.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/asadhasnain/iTwinjsStarterKit.git",
-    "directory": "templates/cra-template-itwin-spa"
+    "directory": "templates/cra-template-itwin-auth-spa"
   },
   "license": "MIT",
   "bugs": {

@@ -1,0 +1,20 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+  }
+  
+  .theme-toggle {
+    position: fixed;
+    top: 0;
+    right: 0;
+  }
+  
+  .app-wrapper {
+    height: 100dvh;
+    padding: 2rem 1rem;
+    overflow: auto;
+  }
+  
