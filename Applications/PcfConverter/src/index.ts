@@ -15,6 +15,8 @@ import path from "path";
 import { initializeLogging } from "./Loggers/BackendLogger";
 import { readECToPCFMapping } from "./Mappings/ReadECtoPCFMapping";
 import { TransformerFactory } from "./Transformers/TransformerFactory";
+import { UnitConversionManager } from "./UnitConversion/UnitConverter";
+import { Presentation, PresentationManager } from "@itwin/presentation-backend";
 
 // Load environment variables from .env file
 dotenv.config();
@@ -44,6 +46,7 @@ const startupIModelHost = async (): Promise<void> => {
   }
 
   await IModelHost.startup({ cacheDir, authorizationClient: authClient, hubAccess: new BackendIModelsAccess() });
+  Presentation.initialize();
 };
 
 const writePCFFile = (filename: string, content: string): void => {
@@ -84,22 +87,31 @@ const downloadAndProcessBriefcase = async (): Promise<void> => {
   const localBriefcaseProps = await BriefcaseManager.downloadBriefcase(requestNewBriefcaseProps);
   const briefcaseDb = await BriefcaseDb.open({ fileName: localBriefcaseProps.fileName, readonly: true });
 
+  new UnitConversionManager().initialize(briefcaseDb);
+
   Logger.logInfo("Backend.BriefcaseManager", `Opened Briefcase Id: ${briefcaseDb.briefcaseId}`);
 
   const ecToPcfMapping = readECToPCFMapping();
   let pcfContent = generatePCFHeader();
+  const presentationManager = Presentation.getManager();
 
   for (const ecClass of ecToPcfMapping.ECClass) {
     const idSet = briefcaseDb.queryEntityIds({ from: ecClass.typeName });
 
     for (const id of idSet) {
-      const elementProps = briefcaseDb.elements.getElementProps<PhysicalElementProps>({ id, wantGeometry: false });
+      
+      const elementProps = await presentationManager.getElementProperties<PhysicalElementProps>({imodel: briefcaseDb, elementId: id}); //briefcaseDb.elements.getElementProps<PhysicalElementProps>({ id, wantGeometry: false });
+
+      if(elementProps === undefined) { 
+        Logger.logWarning("Backend.BriefcaseManager", `Element with ID ${id} not found in briefcase.`);
+        continue;
+      }
       Logger.logInfo("Backend.BriefcaseManager", `Processing element: ${JSON.stringify(elementProps, null, 2)}`);
       const transformer = TransformerFactory.getTransformer(ecClass.typeName);
       pcfContent += transformer.transform(ecClass, elementProps);
 
       if (ecClass.Relationship) {
-        pcfContent += processRelationships(briefcaseDb, ecClass, elementProps);
+        pcfContent += await processRelationships(briefcaseDb, ecClass, elementProps);
       }
     }
   }
@@ -113,14 +125,18 @@ const generatePCFHeader = (): string => {
   return `ISOGEN-FILES\nUNITS-BORE INCHES\nUNITS-CO-ORDS MM\nUNITS-BOLT-LENGTH MM\nUNITS-WEIGHT KGS\n`;
 };
 
-const processRelationships = (briefcaseDb: BriefcaseDb, ecClass: any, elementProps: PhysicalElementProps): string => {
+const processRelationships = async (briefcaseDb: BriefcaseDb, ecClass: any, elementProps: PhysicalElementProps): Promise<string> => {
   let pcfContent = '';
   const targetIds = getTargetInstance(briefcaseDb, ecClass.Relationship.relationshipName, elementProps.id!);
   const relationshipTransformer = TransformerFactory.getRelationshipTransformer(ecClass.Relationship.relationshipName);
-
+  const presentationManager = Presentation.getManager();
   for (const targetId of targetIds) {
-    const targetElementProps = briefcaseDb.elements.getElementProps<PhysicalElementProps>({ id: targetId, wantGeometry: false });
+    const targetElementProps = await presentationManager.getElementProperties<PhysicalElementProps>({ imodel: briefcaseDb, elementId: targetId });
     Logger.logInfo("Backend.BriefcaseManager", `Processing element: ${JSON.stringify(targetElementProps, null, 2)}`);
+    if(targetElementProps === undefined) { 
+        Logger.logWarning("Backend.BriefcaseManager", `Element with ID ${targetId} not found in briefcase.`);
+        continue;
+      }
     pcfContent += relationshipTransformer.transform(ecClass.Relationship, elementProps, targetElementProps);
   }
 

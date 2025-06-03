@@ -17,10 +17,12 @@
   "author": "Asad Hasnain",
   "license": "MIT",
   "dependencies": {
-    "@itwin/core-backend": "^4.10.7",
-    "@itwin/core-common": "^4.10.7",
-    "@itwin/imodels-access-backend": "^5.2.3",
+    "@itwin/core-backend": "^4.11.3",
+    "@itwin/core-common": "^4.11.3",
+    "@itwin/ecschema-metadata": "^4.11.3",
+    "@itwin/imodels-access-backend": "^5.0.0",
     "@itwin/node-cli-authorization": "^2.0.4",
+    "@itwin/presentation-backend": "^4.11.3",
     "dotenv": "^16.4.7"
   },
   "devDependencies": {
