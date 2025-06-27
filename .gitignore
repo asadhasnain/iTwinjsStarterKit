@@ -60,3 +60,5 @@ tmp/
 
 
 output*.pcf
+
+.VS*
