@@ -1,4 +1,4 @@
-# PCF Converter Application
+# PCF Export Application
 
 This is a sample application to convert iModel data into pcf format.
 
