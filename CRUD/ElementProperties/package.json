@@ -1,0 +1,33 @@
+{
+  "name": "crud-elementProperties",
+  "version": "1.0.0",
+  "description": "The sample explaining how to retrieve elements properties in an iModel using iTwin.js.",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc 1>&2",
+    "start": "node ./dist/index.js",
+    "test": "mocha"
+  },
+  "keywords": [
+    "Node",
+    "CLI",
+    "Authorization",
+    "iTwin.js"
+  ],
+  "author": "Asad Hasnain",
+  "license": "MIT",
+  "dependencies": {
+    "@itwin/core-backend": "^4.11.3",
+    "@itwin/core-common": "^4.11.3",
+    "@itwin/ecschema-metadata": "^4.11.3",
+    "@itwin/imodels-access-backend": "^5.0.0",
+    "@itwin/node-cli-authorization": "^2.0.4",
+    "@itwin/presentation-backend": "^4.11.3",
+    "dotenv": "^16.4.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  }
+}
