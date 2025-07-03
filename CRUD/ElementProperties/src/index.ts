@@ -4,9 +4,8 @@
  * It uses environment variables for configuration and performs authentication using NodeCliAuthorizationClient.
  */
 
-import { BriefcaseDb, BriefcaseManager, IModelHost, KnownLocations, PhysicalElement } from "@itwin/core-backend";
-import { DbResult, Id64String } from "@itwin/core-bentley";
-import { ECSqlReader, IModelError, ITwinError, RequestNewBriefcaseProps } from "@itwin/core-common";
+import { BriefcaseDb, BriefcaseManager, IModelHost, KnownLocations } from "@itwin/core-backend";
+import { ECSqlReader, RequestNewBriefcaseProps } from "@itwin/core-common";
 import { BackendIModelsAccess } from "@itwin/imodels-access-backend";
 import { NodeCliAuthorizationClient } from "@itwin/node-cli-authorization";
 import * as dotenv from "dotenv";

@@ -5,7 +5,7 @@
  */
 
 import { BriefcaseDb, BriefcaseManager, IModelHost, KnownLocations } from "@itwin/core-backend";
-import { DbResult, Id64String } from "@itwin/core-bentley";
+import { Id64String, Logger } from "@itwin/core-bentley";
 import { ECSqlReader, RequestNewBriefcaseProps } from "@itwin/core-common";
 import { BackendIModelsAccess } from "@itwin/imodels-access-backend";
 import { NodeCliAuthorizationClient } from "@itwin/node-cli-authorization";
@@ -96,7 +96,7 @@ const queryElements = async (briefcaseDb: BriefcaseDb): Promise<Id64String[]> =>
     const briefcaseDb = await downloadAndProcessBriefcase();
 
     await queryElements(briefcaseDb).then((elementsId: Id64String[]) => {
-      console.log(`Queried Elements: ${elementsId}`);
+      Logger.logInfo("Read Elements",`Queried Elements: ${elementsId}`);
     });
 
     // Close the briefcase and release it
